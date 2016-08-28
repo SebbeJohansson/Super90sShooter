@@ -1,0 +1,40 @@
+/* Weapon Type Structures */
+
+/*
+    id = Id for weapon.
+    name = Name of Weapon.
+    damage = Damage per round.
+    reloadTime = Time to reload in miliseconds.
+    fireRate = Time between rounds in miliseconds.
+    maxClipAmmo = Max ammo 1 clip can hold.
+    maxTotalAmmo = Max ammo player can have.
+    slug = slug name for weapon. Name Without all the weird stuff.
+*/
+
+
+[
+	{
+
+		"id": 0,
+		"name": "Pistol",
+		"damage": 5,
+        "reloadTime" :  2000,
+        "fireRate" : 1000,
+		"maxClipAmmo": 12,
+		"maxTotalAmmo": 36,
+        "projectileType": "bullet", 
+        "slug": "pistol"
+	},
+    {
+
+		"id": 1,
+		"name": "Laser",
+		"damage": 5,
+        "reloadTime" :  2000,
+        "fireRate" : 1000,
+		"maxClipAmmo": 12,
+		"maxTotalAmmo": 36,
+        "projectileType": "laser", 
+        "slug": "laser"
+	}
+]
