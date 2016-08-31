@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class projectileSpawner : MonoBehaviour {
+public class projectileSpawner : Photon.MonoBehaviour {
 
     //public GameObject projectilePrefab;
 
@@ -28,9 +28,7 @@ public class projectileSpawner : MonoBehaviour {
         {
             mProjectileType = "Projectile";
         }
-        mProjectile = (GameObject)Instantiate(Resources.Load(mProjectileType));
-        mProjectile.transform.position = transform.position;
-        mProjectile.transform.rotation = transform.rotation;
+        mProjectile = (GameObject)PhotonNetwork.Instantiate(mProjectileType, transform.position, transform.rotation, 0);
         mProjectile.GetComponent<projectile>().dmg = dmg;
     }
 
