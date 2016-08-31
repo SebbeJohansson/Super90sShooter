@@ -17,6 +17,8 @@ public class weaponBase : MonoBehaviour
 
     private projectileSpawner projSpawner;
 
+    float reloadTimer = 0;
+
     void Start()
     {
         projSpawner = GetComponentInChildren<projectileSpawner>(); 
@@ -56,19 +58,28 @@ public class weaponBase : MonoBehaviour
     {
         if (currentClipAmmo > 0)
         {
-            print("Pew Pew Pew");
-            currentClipAmmo -= 1;
-            projSpawner.spawnProjectile(damage, projectileType);
+            if (reloadTimer <= Time.fixedTime)
+            {
+                print("Pew Pew Pew");
+                currentClipAmmo -= 1;
+                projSpawner.spawnProjectile(damage, projectileType);
+                if (currentClipAmmo < 0)
+                {
+                    reload();
+                }
+            }
         }
         else
         {
             reload();
+            
         }
         updateWeapon();
     }
 
     public void reload()
     {
+        reloadTimer = Time.fixedTime + (reloadTime / 1000);
         if (currentTotalAmmo > 0)
         {
             int tempClip = maxClipAmmo - currentClipAmmo;

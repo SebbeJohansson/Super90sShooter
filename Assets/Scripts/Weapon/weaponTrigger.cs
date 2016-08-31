@@ -25,7 +25,7 @@ public class weaponTrigger : MonoBehaviour {
         if (timePassed <= Time.fixedTime)
         {
             weapon.fire();
-            timePassed = Time.fixedTime + (weapon.fireRate / 1000);
+            timePassed = Time.fixedTime + ((60000 / (float)weapon.fireRate) / 1000);
         }
     }
 
