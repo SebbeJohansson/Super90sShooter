@@ -160,4 +160,11 @@ public class playerStats : MonoBehaviour {
         currHP = 0;
     }
 
+	public void damage(int dmg)
+	{
+		Debug.Log ("Player took " + dmg + " damage.");
+		currHP -= dmg;
+	}
+
+
 }

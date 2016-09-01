@@ -13,7 +13,7 @@ public class respawner : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        playerStats = FindObjectOfType<playerStats>();
+        
         spawnPoints = FindObjectsOfType<spawnPoint>();
 
         
@@ -28,6 +28,7 @@ public class respawner : MonoBehaviour
     public void respawn()
     {
         print(getSpawnPoint().transform.position);
+		playerStats = FindObjectOfType<playerStats>();
         playerStats.respawnPlayer(getSpawnPoint().transform.position);
     }
 

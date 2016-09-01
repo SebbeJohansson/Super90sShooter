@@ -29,3 +29,6 @@ sysinfo.txt
 .DS_Store
 *.swp
 StyleCop*
+*.csproj
+Assembly-CSharp-Editor.csproj
+*.csproj
