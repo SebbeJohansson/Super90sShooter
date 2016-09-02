@@ -124,6 +124,7 @@
      <Compile Include="Assets\Scripts\Networking\respawner.cs" />
      <Compile Include="Assets\Scripts\Networking\spawnPoint.cs" />
      <Compile Include="Assets\Scripts\Weapon\Pickups\weaponPickupBase.cs" />
+     <Compile Include="Assets\Scripts\Weapon\explosion.cs" />
      <Compile Include="Assets\Scripts\Weapon\projectile.cs" />
      <Compile Include="Assets\Scripts\Weapon\projectileSpawner.cs" />
      <Compile Include="Assets\Scripts\Weapon\weaponBase.cs" />
