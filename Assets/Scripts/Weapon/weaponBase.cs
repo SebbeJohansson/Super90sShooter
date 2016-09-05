@@ -60,7 +60,7 @@ public class weaponBase : MonoBehaviour
         {
             if (reloadTimer <= Time.fixedTime)
             {
-                print("Pew Pew Pew");
+                //print("Pew Pew Pew");
                 currentClipAmmo -= 1;
                 projSpawner.spawnProjectile(damage, projectileType);
                 if (currentClipAmmo < 0)

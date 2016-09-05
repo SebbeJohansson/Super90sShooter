@@ -21,7 +21,7 @@ public class projectile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        projRig.AddRelativeForce(Vector3.forward * 1000);
+        //projRig.AddRelativeForce(Vector3.forward * 1000);
 	}
 
 	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -37,6 +37,7 @@ public class projectile : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll)
     {
+		//print ("Projectile hit something that was tagged with " + coll.gameObject.tag + " and the name " + coll.gameObject.name);
 		/*if (coll.gameObject.tag == "Enemy") {
 			coll.GetComponent<enemy> ().damage (dmg);
 		} else if (coll.gameObject.tag == "Player") {
@@ -52,12 +53,12 @@ public class projectile : MonoBehaviour {
 			if (timer <= Time.fixedTime) {
 				Destroy (gameObject);
 			}
-		}*/
-		if (coll.tag == "Player") {
+		}
+		if (coll.gameObject.tag == "Player") {
 			print ("I hit a player.");
 		} else {
-			Destroy (gameObject);
-		}
+			//Destroy (gameObject);
+		}*/
 
     }
 
