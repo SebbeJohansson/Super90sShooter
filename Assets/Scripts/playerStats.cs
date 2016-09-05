@@ -68,7 +68,14 @@ public class playerStats : MonoBehaviour {
     }
 
 	void OnTriggerEnter(Collider coll){
-		print (coll.tag);
+		if (coll.tag == "Projectile") {
+			print ("Player was hit by a projectile");
+			if (coll.GetComponent<projectile> ().createdByClient == false) {
+				print ("You got hit by the enemy, you fool. " + coll.GetComponent<projectile> ().dmg + " is thy dmg you took.");
+			} else {
+				print ("You hit yourself you dumdum");
+			}
+		}
 	}
 
 	void OnCollisionEnter(Collision coll) {

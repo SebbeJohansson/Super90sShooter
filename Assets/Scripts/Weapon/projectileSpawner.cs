@@ -30,6 +30,7 @@ public class projectileSpawner : Photon.MonoBehaviour {
         }
         mProjectile = (GameObject)PhotonNetwork.Instantiate(mProjectileType, transform.position, transform.rotation, 0);
         mProjectile.GetComponent<projectile>().dmg = dmg;
+		mProjectile.GetComponent<projectile> ().createdByClient = true;
     }
 
 }

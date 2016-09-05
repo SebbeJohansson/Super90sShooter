@@ -5,6 +5,7 @@ public class projectile : MonoBehaviour {
 
     private Rigidbody projRig;
     public int dmg;
+	public bool createdByClient = false;
 
 	private float timer = 0.01f;
 
@@ -21,6 +22,17 @@ public class projectile : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         projRig.AddRelativeForce(Vector3.forward * 1000);
+	}
+
+	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+	{
+		if (stream.isWriting) {
+			// OUTPUT
+			stream.SendNext (dmg);
+		} else {
+			// INPUT
+			dmg = (int)stream.ReceiveNext();
+		}
 	}
 
     void OnTriggerEnter(Collider coll)
