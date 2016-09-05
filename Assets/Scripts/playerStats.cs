@@ -67,6 +67,17 @@ public class playerStats : MonoBehaviour {
         }
     }
 
+	void OnTriggerEnter(Collider coll){
+		print (coll.tag);
+	}
+
+	void OnCollisionEnter(Collision coll) {
+		//if((coll.tag == "Bullet"/* && coll.GetComponent<Projectile>()*/) || coll.tag == "Explosion"){
+		//currHP -= coll.GetComponent<Projectile>().getDamage();
+		//isDead();
+		//}
+	}
+
     void showInventory()
     {
         for (int i = 0; i < weaponInventory.Count; i++)
@@ -132,12 +143,7 @@ public class playerStats : MonoBehaviour {
         transform.position = new Vector3(0, 0, 0);
     }
 
-    void OnCollisionEnter(Collision coll) {
-        //if((coll.tag == "Bullet"/* && coll.GetComponent<Projectile>()*/) || coll.tag == "Explosion"){
-            //currHP -= coll.GetComponent<Projectile>().getDamage();
-            //isDead();
-        //}
-    }
+    
 
     void isDead()
     {

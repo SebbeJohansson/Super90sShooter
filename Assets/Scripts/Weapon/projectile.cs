@@ -13,19 +13,19 @@ public class projectile : MonoBehaviour {
         projRig = GetComponent<Rigidbody>();
         projRig.rotation = transform.rotation;
         projRig.freezeRotation = false;
-        projRig.velocity = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z) * 10;
-        //projRig.AddRelativeForce(Vector3.forward * 10000);
+        //projRig.velocity = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z) * 10;
+        projRig.AddRelativeForce(Vector3.forward * 10000);
 		timer += Time.fixedTime;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        //projRig.AddRelativeForce(Vector3.forward * 1000);
+        projRig.AddRelativeForce(Vector3.forward * 1000);
 	}
 
-    /*void OnTriggerEnter(Collider coll)
+    void OnTriggerEnter(Collider coll)
     {
-		if (coll.gameObject.tag == "Enemy") {
+		/*if (coll.gameObject.tag == "Enemy") {
 			coll.GetComponent<enemy> ().damage (dmg);
 		} else if (coll.gameObject.tag == "Player") {
 			if (coll.GetComponent<playerStats> () != null) {
@@ -40,12 +40,16 @@ public class projectile : MonoBehaviour {
 			if (timer <= Time.fixedTime) {
 				Destroy (gameObject);
 			}
+		}*/
+		if (coll.tag == "Player") {
+			print ("I hit a player.");
+		} else {
+			Destroy (gameObject);
 		}
 
-		Destroy (gameObject);
-    }*/
+    }
 
-    void OnCollisionEnter(Collision coll) {
+    /*void OnCollisionEnter(Collision coll) {
         print(coll.gameObject);
         
         if (coll.gameObject.tag == "Player")
@@ -59,20 +63,20 @@ public class projectile : MonoBehaviour {
 
                     print(coll.gameObject.GetComponent<PhotonView>().isMine);
                 }
-            }*/
+            }
             
-        }
+        }*/
         
 
         /*if (coll.gameObject.tag == "Player" && coll.gameObject.GetComponent<PhotonView>().isMine != true)
         {
             print("The thingy hit a player");
             //coll.gameObject.GetComponent<enemy>().damage(dmg);
-        }*/
+        }
 
         print("Destroyed " + gameObject.name);
         Destroy(gameObject);
     }
-    
+    */
     
 }
