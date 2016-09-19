@@ -25,7 +25,7 @@ public class cameraMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         playerRotation();
 
         if (Input.GetKeyDown(KeyCode.Escape))
