@@ -37,7 +37,8 @@ public class projectile : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll)
     {
-		//print ("Projectile hit something that was tagged with " + coll.gameObject.tag + " and the name " + coll.gameObject.name);
+		//coll.gameObject.GetComponent<PhotonView>()
+		print ("Projectile hit something that was tagged with " + coll.gameObject.tag + " and the name " + coll.gameObject.name);
 		/*if (coll.gameObject.tag == "Enemy") {
 			coll.GetComponent<enemy> ().damage (dmg);
 		} else if (coll.gameObject.tag == "Player") {
@@ -63,8 +64,9 @@ public class projectile : MonoBehaviour {
     }
 
     /*void OnCollisionEnter(Collision coll) {
+     * 
         print(coll.gameObject);
-        
+        /*
         if (coll.gameObject.tag == "Player")
         {
             print(coll.gameObject.tag);
@@ -89,7 +91,7 @@ public class projectile : MonoBehaviour {
 
         print("Destroyed " + gameObject.name);
         Destroy(gameObject);
-    }
-    */
+    }*/
+    
     
 }

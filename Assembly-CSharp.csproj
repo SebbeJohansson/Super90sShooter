@@ -123,6 +123,9 @@
      <Compile Include="Assets\Scripts\Networking\respawnTimer.cs" />
      <Compile Include="Assets\Scripts\Networking\respawner.cs" />
      <Compile Include="Assets\Scripts\Networking\spawnPoint.cs" />
+     <Compile Include="Assets\Scripts\Powerups\armorkit.cs" />
+     <Compile Include="Assets\Scripts\Powerups\healthkit.cs" />
+     <Compile Include="Assets\Scripts\Powerups\powerupBase.cs" />
      <Compile Include="Assets\Scripts\Weapon\Pickups\weaponPickupBase.cs" />
      <Compile Include="Assets\Scripts\Weapon\projectile.cs" />
      <Compile Include="Assets\Scripts\Weapon\projectileSpawner.cs" />

@@ -3,46 +3,37 @@ using System.Collections;
 
 public class playerMovement : MonoBehaviour {
 
-    private Rigidbody playerRigid;
+	private CharacterController playerController;
     private float speed;
     private float jumpVel;
-    private bool grounded;
-    private int topSpeed;
+	private float gravityDrag;
+	private Vector3 moveDirection;
     
 	// Use this for initialization
 	void Start () {
-        playerRigid = GetComponent<Rigidbody>();
-        playerRigid.freezeRotation = true;
-        speed = 20.0f;
-        jumpVel = 300.0f;
-        topSpeed = 10;
+		playerController = GetComponent<CharacterController>();
+        speed = 15.0f;
+        jumpVel = 8.0f;
+		gravityDrag = 15.0f;
+		moveDirection = Vector3.zero;
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         movement();
-        jump();
     }
 
     private void movement() {
-        //playerRigid.velocity += new Vector3(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
-        if (playerRigid.velocity.magnitude < topSpeed) {
-            playerRigid.AddRelativeForce(Vector3.forward * Input.GetAxis("Vertical") * speed);
-            playerRigid.AddRelativeForce(Vector3.right * Input.GetAxis("Horizontal") * speed);
-        }
-    }
+		if(playerController.isGrounded == true){
+			moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
+			moveDirection = transform.TransformDirection (moveDirection);
+			moveDirection *= speed;
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				moveDirection.y = jumpVel;
+			}
+		}
 
-    private void jump() {
-        if (Input.GetKeyDown(KeyCode.Space) && grounded == true) {
-            playerRigid.AddForce(Vector3.up * jumpVel);
-        }
-    }
-
-    private void OnCollisionEnter() {
-        grounded = true;
-    }
-
-    private void OnCollisionExit() {
-        grounded = false;
+		moveDirection.y -= gravityDrag * Time.deltaTime;
+		playerController.Move (moveDirection * Time.deltaTime);
     }
 }

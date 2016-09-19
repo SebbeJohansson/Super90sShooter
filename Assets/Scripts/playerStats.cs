@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class playerStats : MonoBehaviour {
 
     private int maxHP;
-    private int currHP;
+	public int currHP;
+
+	private int maxArmor;
+	public int currArmor;
 
     private Camera deathCam;
     private Camera playerCam;
@@ -23,6 +26,9 @@ public class playerStats : MonoBehaviour {
 	void Start () {
         maxHP = 100;
         currHP = maxHP;
+
+		maxArmor = 100;
+		currArmor = maxArmor;
 
         deathCam = GameObject.Find("DeathCamera").GetComponent<Camera>();
         deathCam.gameObject.SetActive(false);
@@ -68,7 +74,7 @@ public class playerStats : MonoBehaviour {
     }
 
 	void OnTriggerEnter(Collider coll){
-		print ("Triggered");
+		//print ("Triggered");
 		if (coll.tag == "Projectile") {
 			print ("Player was hit by a projectile");
 			if (coll.GetComponent<projectile> ().createdByClient == false) {
@@ -172,13 +178,36 @@ public class playerStats : MonoBehaviour {
     void killPlayer()
     {
         currHP = 0;
+		currArmor = 0;
     }
 
 	public void damage(int dmg)
 	{
 		Debug.Log ("Player took " + dmg + " damage.");
-		currHP -= dmg;
+		if (currArmor <= 0) {
+			currHP -= dmg;
+		} else {
+			currArmor -= dmg;
+		}
+
 	}
 
+	public void addHP(int hp){
+		if (currHP < maxHP) {
+			currHP += hp;
+		}
+		if (currHP>maxHP) {
+			currHP = maxHP;
+		}
+	}
+
+	public void addArmor(int armor){
+		if (currArmor < maxArmor) {
+			currArmor += armor;
+		}
+		if (currArmor>maxArmor) {
+			currArmor = maxArmor;
+		}
+	}
 
 }
